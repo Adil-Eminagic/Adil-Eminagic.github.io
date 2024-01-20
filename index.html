@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1 style="color: yellow;background-color: green;">Hello world</h1>
+    <div id="container">
+        <button id="change" class="btn" onclick="change_color()">Change color</button>
+        <button id="start" class="btn" onclick="start_lightshow()">Strat light show</button>
+        <button id="stop" class="btn" onclick="stop_lightshow()">Stop light show</button>
+    </div>
 </body>
+<style>
+    #container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn {
+        border: none;
+        padding: 0.4%;
+        margin-right: 4px;
+        background-color: blueviolet;
+        color: white;
+    }
+</style>
+<script>
+    let container = document.getElementById("container");
+    let change = document.getElementById("change");
+    let start = document.getElementById("start");
+    let stop = document.getElementById("stop");
+    let index = 0;
+    change_color = () => {
+        if (index < colors.length - 1) {
+            index++;
+            container.style.backgroundColor = colors[index];
+        }
+        else {
+            index = 0;
+            container.style.backgroundColor = colors[index];
+        }
+    }
+    var inteval;
+    var on_off=false
+
+    start_lightshow = () => {
+        if (on_off == false) {
+            inteval = setInterval(change_color, 400);
+            on_off=true;
+        }
+    }
+
+    stop_lightshow = () => {
+        if (on_off == true) { 
+            clearInterval(inteval);
+            on_off=false;
+        }
+    }
+
+    const colors = [
+        'black',
+        'aqua',
+        'yellow',
+        'red',
+        'green',
+        'blue',
+        'purple',
+        'orange',
+        'pink',
+        'brown',
+        'cyan',
+        'magenta',
+        'lime',
+        'teal',
+        'indigo',
+        'violet',
+        'gray',
+        'maroon',
+        'olive',
+        'navy'
+    ];
+
+
+</script>
+
 </html>
